@@ -5,3 +5,5 @@ resume on https://www.superjob.ru/: https://irkutsk.superjob.ru/resume/arhitekto
 
 
 resume on https://www.hh.ru/: https://irkutsk.hh.ru/applicant/resumes?hhtmFrom=settings&amp;hhtmFromLabel=header
+
+commit for save repository?
