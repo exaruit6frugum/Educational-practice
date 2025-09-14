@@ -3,38 +3,37 @@
 #include <string>
 
 int main() {
-    std::string input;
+    std::string str;
     std::cout << "Введите строку из шести символов: \n";
-    std::cin >> input;
+    std::cin >> str;
 
     bool isValid = true;
-
-    if (input.length() != 6) {
+    if (str.length() != 6) {
         isValid = false;
     }
 
     if (isValid) {
-        if (!std::isalpha(input[0]) || !std::isupper(input[0])) {
+        if (!std::isalpha(str[0]) || !std::isupper(str[0])) {
             isValid = false;
         }
 
-        for (int i = 1; i <= 3; i++) {
-            if (!std::isdigit(input[i])) {
+        for (int i = 1; i < 4; i++) {
+            if (!std::isdigit(str[i])) {
                 isValid = false;
             }
         }
 
-        for (int i = 4; i <= 5; i++) {
-            if (!std::isalpha(input[i]) || !std::isupper(input[i])) {
+        for (int i = 4; i < 6; i++) {
+            if (!std::isalpha(str[i]) || !std::isupper(str[i])) {
                 isValid = false;
             }
         }
     }
 
-    std::cout << "Результат: \n";
     if (isValid) {
         std::cout << "Yes" << std::endl;
-    } else {
+    }
+    else {
         std::cout << "No" << std::endl;
     }
 

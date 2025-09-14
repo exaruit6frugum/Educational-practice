@@ -2,19 +2,20 @@
 #include <vector>
 
 int main() {
-    int height;
-    int width;
-    
+    int height = 0;
+    int width = 0;
+
     std::cout << "Введите высоту матрицы: ";
     std::cin >> height;
+
     std::cout << "Введите ширину матрицы: ";
     std::cin >> width;
 
     std::vector<std::vector<int>> matrix(height, std::vector<int>(width));
 
     std::cout << "Введите матрицу построчно:" << std::endl;
-    for (int i = 0; i < height; ++i) {
-        for (int j = 0; j < width; ++j) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
             std::cin >> matrix[i][j];
         }
     }
@@ -24,8 +25,8 @@ int main() {
     int min_col = width;
     int max_col = 0;
 
-    for (int i = 0; i < height; ++i) {
-        for (int j = 0; j < width; ++j) {
+    for (int i = 0; i < height; i++) {
+        for (int j = 0; j < width; j++) {
             if (matrix[i][j] == 1) {
                 if (i < min_row) {
                     min_row = i;

@@ -2,40 +2,42 @@
 #include <vector>
 #include <cstdlib>
 #include <ctime>
-using namespace std;
 
 int main() {
     srand(time(0));
     
-    cout << "Введите число улиц и количество запросов:" << '\n';
-    int n, k;
-    cin >> n >> k;
+    std::cout << "Введите число улиц и количество запросов:" << '\n';
+    int n = 0;
+    int k = 0;
+    std::cin >> n >> k;
 
-    vector<int> snow(n + 1, 0);
-    vector<vector<int>> queries;
+    std::vector<int> snow(n + 1, 0);
+    std::vector<std::vector<int>> queries;
 
     for (int i = 0; i < k; i++) {
         int type = rand() % 2 + 1;
         int a = rand() % n + 1;
-        int b;
+        int b = 0;
         
         if (type == 1) {
             b = rand() % 10 + 1;
             queries.push_back({type, a, b});
         } else {
             b = rand() % n + 1;
-            if (a > b) swap(a, b);
+            if (a > b) {
+                std::swap(a, b);
+            }
             queries.push_back({type, a, b});
         }
     }
 
-    cout << "(Автоматически сгенерированные) Запросы:" << endl;
+    std::cout << "(Автоматически сгенерированные) Запросы:" << std::endl;
     for (const auto& q : queries) {
-        cout << q[0] << " " << q[1] << " " << q[2] << endl;
+        std::cout << q[0] << " " << q[1] << " " << q[2] << std::endl;
     }
-    cout << endl;
+    std::cout << std::endl;
 
-    cout << "Результаты:" << endl;
+    std::cout << "Результаты:" << std::endl;
     for (const auto& q : queries) {
         int type = q[0];
         int a = q[1];
@@ -48,7 +50,7 @@ int main() {
             for (int i = a; i <= b; i++) {
                 sum += snow[i];
             }
-            cout << sum << endl;
+            std::cout << sum << std::endl;
         }
     }
 

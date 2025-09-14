@@ -16,8 +16,10 @@ int main() {
     
     step[0].resize(1);
     step[0][0] = std::rand() % 1000 + 1;
+
     int idx_last_min = 0;
     int min = 0;
+
     way[0] = step[0][0];
 
     for (int i = 1; i < count; i++) {
@@ -34,16 +36,19 @@ int main() {
             min = step[i][idx_last_min + 1];
             idx_last_min += 1;
         }
+
         way_sum += min;
         way[i] = min;
     }
 
     std::cout << "Время кратчайшего пути: " << '\n';
     std::cout << way_sum << '\n';
+
     std::cout << "Кратчайший путь: " << '\n';
     for (int i = 0; i < count; i++) {
         std::cout << way[i] << ' ';
     }
+    
     std::cout << '\n';
 
     std::cout << "Карта горы:\n" ;

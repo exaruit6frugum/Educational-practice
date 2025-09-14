@@ -3,62 +3,62 @@
 #include <cstdlib>
 #include <ctime>
 #include <algorithm>
-using namespace std;
 
-void dfs(int v, vector<bool>& visited, vector<vector<int>>& graph) {
+void DFS(int v, std::vector<bool>& visited, std::vector<std::vector<int>>& graph) {
     visited[v] = true;
     for (int u : graph[v]) {
         if (!visited[u]) {
-            dfs(u, visited, graph);
+            DFS(u, visited, graph);
         }
     }
 }
 
 int main() {
-    srand(time(0));
+    std::srand(time(0));
 
-    int N, M = 0;
-    cout << "Введите число вершин: " << '\n';
-    cin >> N;
-    cout << "Введите число рёбер: " << '\n';
-    cin >> M;
+    int n = 0;
+    int m = 0;
+    std::cout << "Введите число вершин: " << '\n';
+    std::cin >> n;
+    std::cout << "Введите число рёбер: " << '\n';
+    std::cin >> m;
 
-    vector<vector<int>> graph(N);
-    vector<bool> edge_exists(N * N, false);
+    std::vector<std::vector<int>> graph(n);
+    std::vector<std::vector<bool>> edge_exists(n, std::vector<bool>(n, false));
 
     int edges_created = 0;
-    while (edges_created < M) {
-        int u = rand() % N;
-        int v = rand() % N;
-        if (u != v && !edge_exists[u * N + v]) {
+    while (edges_created < m) {
+        int u = std::rand() % n;
+        int v = std::rand() % n;
+        if (u != v && !edge_exists[u][v]) {
             graph[u].push_back(v);
             graph[v].push_back(u);
-            edge_exists[u * N + v] = true;
-            edge_exists[v * N + u] = true;
+            edge_exists[u][v] = true;
+            edge_exists[v][u] = true;
             edges_created++;
         }
     }
 
-    cout << "Рёбра в графе:" << endl;
-    for (int u = 0; u < N; ++u) {
+    std::cout << "Рёбра в графе:" << '\n';
+    for (int u = 0; u < n; u++) {
         for (int v : graph[u]) {
             if (u < v) {
-                cout << u << " " << v << endl;
+                std::cout << u << " " << v << '\n';
             }
         }
     }
 
-    vector<bool> visited(N, false);
+    std::vector<bool> visited(n, false);
     int components = 0;
-    for (int i = 0; i < N; ++i) {
+    for (int i = 0; i < n; i++) {
         if (!visited[i]) {
-            dfs(i, visited, graph);
+            DFS(i, visited, graph);
             components++;
         }
     }
 
-    cout << "Минимальное число рёбер для объединения сети: ";
-    cout << components - 1 << endl;
+    std::cout << "Минимальное число рёбер для объединения сети: ";
+    std::cout << components - 1 << '\n';
 
     return 0;
 }
