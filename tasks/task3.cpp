@@ -4,7 +4,7 @@
 #include <ctime>
 
 int main() {
-    srand(time(0));
+    std::srand(time(0));
     
     std::cout << "Введите число улиц и количество запросов:" << '\n';
     int n = 0;
@@ -15,15 +15,15 @@ int main() {
     std::vector<std::vector<int>> queries;
 
     for (int i = 0; i < k; i++) {
-        int type = rand() % 2 + 1;
-        int a = rand() % n + 1;
+        int type = std::rand() % 2 + 1;
+        int a = std::rand() % n + 1;
         int b = 0;
         
         if (type == 1) {
-            b = rand() % 10 + 1;
+            b = std::rand() % 10 + 1;
             queries.push_back({type, a, b});
         } else {
-            b = rand() % n + 1;
+            b = std::rand() % n + 1;
             if (a > b) {
                 std::swap(a, b);
             }
