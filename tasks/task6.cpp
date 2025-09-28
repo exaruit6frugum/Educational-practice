@@ -11,10 +11,6 @@ int main() {
     int b = 0;
     int x = 0;
     int y = 0;
-    int usedB = 0;
-    int remainingX = 0;
-    int availableForA = 0;
-    int usedA = 0;
     int result = 0;
     std::vector<int> vec_result(n);
 
@@ -23,13 +19,7 @@ int main() {
     for (int i = 0; i < n; i++) {
         std::cin >> a >> b >> x >> y;
         
-        usedB = std::min(b, x);
-        remainingX = x - usedB;
-        
-        availableForA = remainingX + y;
-        usedA = std::min(a, availableForA);
-        
-        result = usedA + usedB;
+        result = std::min(a + b, x + y) - std::max(0, b - x);
         vec_result[j++] = result;
        
     }

@@ -7,7 +7,7 @@ if image is None:
     exit()
 
 cv2.imshow("Original", image)
-cv2.waitKey(0);
+cv2.waitKey(0)
 
 blurred = cv2.GaussianBlur(image, (11, 11), 0)
 cv2.imshow("Blurred image", blurred)
